@@ -38,7 +38,7 @@ function handleSpiegelConsent(browserPage) {
 }
 
 function handleZeitConsent(browserPage) {
-    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(page));
+    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(browserPage));
     return new Promise(resolve => {
         browserPage.once('load', resolve);
         browserPage.evaluate(function() {
