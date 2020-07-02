@@ -1,4 +1,11 @@
+function createClickFunction(browserPage) {
+    return function(selector) {
+        this.click(selector)
+    }.bind(browserPage);
+}
+
 function handleSpiegelConsent(browserPage) {
+    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(page));
     return new Promise(resolve => {
         browserPage.once('load', resolve);
         browserPage.evaluate(() => {
@@ -31,6 +38,7 @@ function handleSpiegelConsent(browserPage) {
 }
 
 function handleZeitConsent(browserPage) {
+    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(page));
     return new Promise(resolve => {
         browserPage.once('load', resolve);
         browserPage.evaluate(function() {
