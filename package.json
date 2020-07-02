@@ -1,0 +1,21 @@
+{
+  "name": "puppeteer-give-consent",
+  "version": "0.1.0",
+  "description": "Functions for giving tracking consent on German news media websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "puppeteer",
+    "headless",
+    "tracking",
+    "consent",
+    "scraping"
+  ],
+  "author": "Martin Schön",
+  "license": "ISC",
+  "peerDependencies": {
+    "puppeteer": "4.x"
+  }
+}
