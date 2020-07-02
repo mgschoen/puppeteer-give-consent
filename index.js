@@ -5,7 +5,7 @@ function createClickFunction(browserPage) {
 }
 
 function handleSpiegelConsent(browserPage) {
-    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(page));
+    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(browserPage));
     return new Promise(resolve => {
         browserPage.once('load', resolve);
         browserPage.evaluate(() => {
