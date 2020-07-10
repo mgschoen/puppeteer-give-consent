@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-give-consent",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Functions for giving tracking consent on German news media websites",
   "main": "index.js",
   "scripts": {
