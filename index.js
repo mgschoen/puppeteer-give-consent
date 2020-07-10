@@ -4,8 +4,17 @@ function createClickFunction(browserPage) {
     }.bind(browserPage);
 }
 
-function handleSpiegelConsent(browserPage) {
-    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(browserPage));
+async function exposeClickFunction(browserPage) {
+    let existingFunction = await browserPage.evaluate(() => {
+        return window.puppeteerClickElement;
+    });
+    if (!existingFunction) {
+        browserPage.exposeFunction('puppeteerClickElement', createClickFunction(browserPage));
+    }
+}
+
+async function handleSpiegelConsent(browserPage) {
+    await exposeClickFunction(browserPage);
     return new Promise(resolve => {
         browserPage.once('load', resolve);
         browserPage.evaluate(() => {
@@ -37,8 +46,8 @@ function handleSpiegelConsent(browserPage) {
     });
 }
 
-function handleZeitConsent(browserPage) {
-    browserPage.exposeFunction('puppeteerClickElement', createClickFunction(browserPage));
+async function handleZeitConsent(browserPage) {
+    await exposeClickFunction(browserPage);
     return new Promise(resolve => {
         browserPage.once('load', resolve);
         browserPage.evaluate(function() {
