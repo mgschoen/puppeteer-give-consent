@@ -61,13 +61,13 @@ async function handleZeitConsent(browserPage) {
 
             function onMutation(mutation) {
                 console.log(mutation);
-                if (!mutation[0].target.classList.contains('box--loading')) {
+                if (!mutation[0].target.classList.contains('option--loading')) {
                     onConsentInitialized();
                 }
             }
 
-            const observationTarget = document.querySelector('.box.js-only');
-            if (observationTarget.classList.contains('box--loading')) {
+            const observationTarget = document.querySelector('.option.option--tcf.js');
+            if (observationTarget.classList.contains('option--loading')) {
                 console.log('still loading');
                 const mutationObserver = new MutationObserver(onMutation);
                 mutationObserver.observe(observationTarget, { attributes: true });
